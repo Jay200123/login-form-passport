@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    //gets the customer register form
     public function getRegister(){
         return view('user.register');
     }
 
+    public function getEmployee(){
+        return view('user.employee_register');
+    }
+
+    //gets the form for sign up
     public function getForm(){
         return view('user.signup_form');
     }

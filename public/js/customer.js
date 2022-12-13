@@ -65,7 +65,7 @@ $(document).ready(function () {
         ],
     });
 
-
+//stire
 $("#customerSubmit").on("click", function (e) {
         
     e.preventDefault();
@@ -101,5 +101,123 @@ $("#customerSubmit").on("click", function (e) {
         },
     });
 });
+
+
+//EDIT
+$("#ctable tbody").on("click", "a.editBtn", function (e) {
+    e.preventDefault();
+    $("#customerModal").modal("show");
+    var id = $(this).data("id");
+
+    $.ajax({
+        type: "GET",
+        enctype: "multipart/form-data",
+        processData: false,
+        contentType: false,
+        cache: false,
+        url: "/api/customers/" + id + "/edit",
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+               $("#customer_id").val(data.id);
+               $("#fname").val(data.fname);
+               $("#lname").val(data.lname);
+               $("#address").val(data.address);
+               $("#town").val(data.town);
+               $("#city").val(data.city);
+               $("#phone").val(data.phone);
+        },
+        error: function (error) {
+            console.log("error");
+        },
+    });
+});
+
+
+//CUSTOMER UPDATE
+$("#customerUpdate").on("click", function (e) {
+    e.preventDefault();
+    var id = $("#customer_id").val();
+    var data = $("#cform")[0];
+    let formData = new FormData(data);
+    console.log(formData);
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + "," + pair[1]);
+    }
+    var table = $("#ctable").DataTable();
+    console.log(id);
+
+    $.ajax({
+        type: "POST",
+        url: "/api/customers/" + id,
+        data: formData,
+        contentType: false,
+        processData: false,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            $("#customerModal").modal("hide");
+            table.ajax.reload();
+        },
+        error: function (error) {
+            console.log(error);
+        },
+    });
+});
+
+
+//DELETE
+$("#cbody").on("click", ".deletebtn", function (e) {
+    var id = $(this).data("id");
+    var $tr = $(this).closest("tr");
+    // var id = $(e.relatedTarget).attr('id');
+    console.log(id);
+    e.preventDefault();
+    bootbox.confirm({
+        message: "Do you want to delete this customer",
+        buttons: {
+            confirm: {
+                label: "Yes",
+                className: "btn-success",
+            },
+            cancel: {
+                label: "No",
+                className: "btn-danger",
+            },
+        },
+        callback: function (result) {
+            if (result)
+                $.ajax({
+                    type: "DELETE",
+                    url: "/api/customers/" + id,
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ),
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        
+                        $tr.find("td").css('backgroundColor','hsl(0,100%,50%').fadeOut(2000, function () {
+                            $tr.remove();
+                        });
+                        
+                        
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    },
+                });
+        },
+    });
+});
+
 
 });

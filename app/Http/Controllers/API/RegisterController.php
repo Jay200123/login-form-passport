@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\Employee;
 use Storage;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -65,6 +66,49 @@ class RegisterController extends BaseController
         // return response()->json(["success" => "Customer created successfully.", "customer" => $customer, "status" => 200]);
    
         return $this->sendResponse($success, 'User register successfully.');
+    }
+
+    public function employeeRegister(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'c_password' => 'required|same:password',
+        ]);
+   
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());       
+        }
+   
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $user = User::create($input);
+        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['name'] =  $user->name;
+
+
+
+        $employee = new Employee();
+
+        $employee->user_id  = $user->id;
+        $employee->fname = $request->fname;
+        $employee->lname = $request->lname;
+        $employee->address = $request->address;
+        $employee->town = $request->town;
+        $employee->city = $request->city;
+        $employee->phone = $request->phone;
+
+        $files = $request->file('uploads');
+
+        $employee->employee_image = 'images/'. $files->getClientOriginalName();
+        $employee->save();
+        // $employee->update();
+
+
+        Storage::put('public/images/'.$files->getClientOriginalName(), file_get_contents($files));
+        return response()->json(["success" => "employee created successfully.", "employee" => $employee, "status" => 200]);
+
     }
    
     /**
