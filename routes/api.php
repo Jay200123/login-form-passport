@@ -6,6 +6,7 @@ use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,19 @@ Route::post('/products/{id}', [ProductController::class, 'update'])->name('produ
 
 //delete
 Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
+//SERVICE API
+//get
+Route::get('services/all', [ServiceController::class, 'getService'])->name('service.all');
+//post
+Route::post('/services/store', [ServiceController::class, 'store'])->name('service.store');
+
+//edit and update
+Route::get('/services/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
+Route::post('/services/{id}', [ServiceController::class, 'update'])->name('service.update');
+
+//delete
+Route::delete('services/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
 
 // Route::middleware('auth:api')->group( function () {
 //     Route::resource('products', ProductController::class);

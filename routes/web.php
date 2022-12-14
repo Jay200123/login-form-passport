@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::GET('employee', [EmployeeController::class, 'index'])->name('employee.ind
 
 //product index
 Route::GET('product', [ProductController::class, 'index'])->name('product.index');
+
+//service index
+Route::get('service', [ServiceController::class, 'index'])->name('service.index');
 
 // Sign up Forms
 Route::GET('signup-forms', [UserController::class, 'getForm'])->name('user.form');
