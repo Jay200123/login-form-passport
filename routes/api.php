@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,6 @@ Route::post('employee-register', [RegisterController::class, 'employeeRegister']
 Route::post('login', [RegisterController::class, 'login'])->name('user.login');
 
 //Customer API
-     
 Route::get('/customers/all', [CustomerController::class, 'getCustomerAll'])->name('customer.all');
 
 Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
@@ -53,6 +53,20 @@ Route::delete('employees/{id}', [EmployeeController::class, 'destroy'])->name('e
 Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
 //update
 Route::post('/employees/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+
+// PRODUCT API
+
+//get
+Route::get('products/all', [ProductController::class, 'getProduct'])->name('product.all');
+//post
+Route::post('/products/store', [ProductController::class, 'store'])->name('product.store');
+
+//edit and update
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/products/{id}', [ProductController::class, 'update'])->name('product.update');
+
+//delete
+Route::delete('products/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
 // Route::middleware('auth:api')->group( function () {
 //     Route::resource('products', ProductController::class);

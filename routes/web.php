@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::GET('customer', [CustomerController::class, 'index'])->name('customer.ind
 
 //employee index
 Route::GET('employee', [EmployeeController::class, 'index'])->name('employee.index');
+
+//product index
+Route::GET('product', [ProductController::class, 'index'])->name('product.index');
+
 // Sign up Forms
 Route::GET('signup-forms', [UserController::class, 'getForm'])->name('user.form');
 

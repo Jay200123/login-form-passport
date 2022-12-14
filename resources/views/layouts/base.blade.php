@@ -35,4 +35,4 @@
 
 <script type='text/javascript' src='js/customer.js'></script>
 <script type='text/javascript' src='js/employee.js'></script>
-
+<script type='text/javascript' src='js/product.js'></script>

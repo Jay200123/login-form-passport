@@ -93,7 +93,7 @@ $("#customerSubmit").on("click", function (e) {
             $ctable.row.add(data.customer).draw(false);
 
             bootbox.alert("Successfully Registered You can now Login to the web page!", function() {
-                location.replace('welcome.blade.php');
+                location.replace('/');
             });
         },
         error: function (error) {

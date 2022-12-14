@@ -60,7 +60,7 @@
 
         <li class="nav-item"> <a class="nav-link" href="#"><p><strong><i class="fa fa-phone" aria-hidden="true"></i>Services</strong></p></a> </li>
 
-        <li class="nav-item"> <a class="nav-link" href="#"><p><strong><i class="fa fa-product-hunt"  aria-hidden="true"></i>Products</strong></p></a></li>
+        <li class="nav-item"> <a class="nav-link" href="{{route('product.index')}}"><p><strong><i class="fa fa-product-hunt"  aria-hidden="true"></i>Products</strong></p></a></li>
         </ul>
 
             <li><a style="color:white" href="{{route('user.form')}}"><span class="glyphicon glyphicon-user"><i class="fa fa-user-plus" aria-hidden="true"></i></span> Sign Up</a></li>
