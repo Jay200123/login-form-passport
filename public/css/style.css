@@ -1,3 +1,9 @@
+body {
+	padding: 0;
+	 margin: 0;
+	 /* background: linear-gradient(to bottom,  white 0%, black 100%); */
+	}
+	
 .login-form{
 
 	text-align: center;
@@ -32,3 +38,47 @@
 	cursor: pointer;
 	border-radius: 5px;
   }
+ 
+  .navbar { 
+   /* background: linear-gradient(to bottom, white 0%, black 100%); */
+   background-color:black;
+   padding: 15px;
+   border-radius:5px;
+   border:1px solid grey;
+   /* box-shadow: 15px 10px; */
+  }
+ 
+  .nav-link, .navbar-brand { color: #fff;
+	cursor: pointer;
+	} 
+ 
+  .nav-link { margin-right: 1em !important;
+  } 
+ 
+  .nav-link:hover{ color: #000;
+	}
+ 
+  .navbar-collapse { 
+   justify-content: flex-end;
+  }
+ 
+  a{
+   color:none;
+   text-decoration:none;
+  }
+ 
+  p{
+   color:white;
+   font-family: sans-serif;
+   font-size: 15px;
+  }
+ 
+  li{
+   margin-right:25px
+  }
+ 
+  img {
+	 border: 3px solid black;
+   }
+  
+ 
