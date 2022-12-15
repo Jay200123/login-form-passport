@@ -91,7 +91,7 @@ $(document).ready(function () {
                 $etable.row.add(data.employee).draw(false);
 
                 bootbox.alert("Successfully Registered You can now Login to the web page!", function() {
-                    location.replace('/');
+                    location.replace('confirmation-message');
                 });
             },
             error: function (error) {

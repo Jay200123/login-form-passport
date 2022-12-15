@@ -43,6 +43,10 @@ Route::get('service', [ServiceController::class, 'index'])->name('service.index'
 // Sign up Forms
 Route::GET('signup-forms', [UserController::class, 'getForm'])->name('user.form');
 
+//route for message in registration
+Route::GET('confirmation-message', [UserController::class, 'getMessage'])->name('confirm.message');
+
+
 
 
 

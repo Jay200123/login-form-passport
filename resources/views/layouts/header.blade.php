@@ -15,11 +15,11 @@
         <li class="nav-item"> <a class="nav-link" href="{{route('service.index')}}"><p><strong><i class="fa fa-phone" aria-hidden="true"></i>Services</strong></p></a> </li>
 
         <li class="nav-item"> <a class="nav-link" href="{{route('product.index')}}"><p><strong><i class="fa fa-product-hunt"  aria-hidden="true"></i>Products</strong></p></a></li>
-        </ul>
 
-            <li><a style="color:white" href="{{route('user.form')}}"><span class="glyphicon glyphicon-user"><i class="fa fa-user-plus" aria-hidden="true"></i></span> Sign Up</a></li>
-            <li><a style="color:white" href="#"><span class="glyphicon glyphicon-log-in"><i class="fa fa-sign-in" aria-hidden="true"></i></span> Login</a></li>
-          
-          </ul>
+        <li class="nav-item"><a style="color:white" class="nav-link" href="{{route('user.form')}}"><span class="glyphicon glyphicon-user"><i class="fa fa-user-plus" aria-hidden="true"></i></span> <strong>Sign Up</strong></a></li>
+
+        <li class="nav-item"><a style="color:white" class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"><i class="fa fa-sign-in" aria-hidden="true"></i></span><strong>Login</strong></a></li>
+
+        </ul>
         </div>
         </nav>

@@ -31,12 +31,10 @@ class CustomerController extends Controller
 
     public function getCustomerAll(Request $request)
     {
-        //if ($request->ajax()){
+        
         $customers = Customer::orderBy('id', 'ASC')->get();
         return response()->json($customers);
 
-        // return view('customer.index');
-        //}
     }
     /**
      * Store a newly created resource in storage.
