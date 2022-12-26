@@ -12,8 +12,9 @@
      <div class="message-box">
         <h3>Confirmation has been send in your Email</h3>
         <p style="color:black">Message Confirmation has been send in Your Email</p>
-        <br>
         <p style="color:black">Please Check Your Email to Confirm Your Registration</p>
+
+        <!-- <h5>from:Footwear Web App</h5> -->
      </div>
 </body>
 </html>

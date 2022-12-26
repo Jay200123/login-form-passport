@@ -18,7 +18,7 @@
 
         <li class="nav-item"><a style="color:white" class="nav-link" href="{{route('user.form')}}"><span class="glyphicon glyphicon-user"><i class="fa fa-user-plus" aria-hidden="true"></i></span> <strong>Sign Up</strong></a></li>
 
-        <li class="nav-item"><a style="color:white" class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"><i class="fa fa-sign-in" aria-hidden="true"></i></span><strong>Login</strong></a></li>
+        <li class="nav-item"><a style="color:white" class="nav-link" href="{{route('user.login_form')}}"><span class="glyphicon glyphicon-log-in"><i class="fa fa-sign-in" aria-hidden="true"></i></span><strong>Login</strong></a></li>
 
         </ul>
         </div>

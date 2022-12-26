@@ -20,8 +20,13 @@ class UserController extends Controller
     public function getForm(){
         return view('user.signup_form');
     }
-
+ 
+    //message view for registered users
     public function getMessage(){
         return view('registration_message');
+    }
+
+    public function getLogin(){
+        return view('user.login');
     }
 }

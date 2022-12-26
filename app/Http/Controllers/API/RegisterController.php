@@ -123,10 +123,21 @@ class RegisterController extends BaseController
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
             $success['name'] =  $user->name;
    
-            return $this->sendResponse($success, 'User login successfully.');
+            return $this->sendResponse([$success, 'User login successfully.', 'URL("/customer")']);
         } 
         else{ 
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         } 
     }
+
+    public function logout(Request $request){
+
+        if ($request->user()) { 
+            $request->user()->tokens('MyApp')->delete();
+        }
+    
+        return response()->json(['message' => 'User Logout Successfully'], 200);
+    }
+
+        
 }

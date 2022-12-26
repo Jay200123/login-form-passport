@@ -33,6 +33,8 @@ Route::post('employee-register', [RegisterController::class, 'employeeRegister']
 //LOGIN FORM
 Route::post('login', [RegisterController::class, 'login'])->name('user.login');
 
+Route::get('logout', [RegisterController::class, 'logout'])->name('user.logout');
+
 //Customer API
 Route::get('/customers/all', [CustomerController::class, 'getCustomerAll'])->name('customer.all');
 
