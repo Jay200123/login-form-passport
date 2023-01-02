@@ -87,8 +87,6 @@ class RegisterController extends BaseController
         $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;
 
-
-
         $employee = new Employee();
 
         $employee->user_id  = $user->id;
@@ -122,22 +120,33 @@ class RegisterController extends BaseController
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
             $success['name'] =  $user->name;
-   
-            return $this->sendResponse([$success, 'User login successfully.', 'URL("/customer")']);
+
+            // $token = $success->getClientOrignalName();
+
+            // Storage::put('public/tokens/'.$token->getClientOriginalName(), file_get_contents($token));
+            return $this->sendResponse($success, 'User login successfully.');
         } 
         else{ 
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         } 
     }
+    public function logout() {
+        // $accessToken = auth()->user()->token();
+        // $user = $request->user()->tokens->find($accessToken);
+        // $user->revoke();
 
-    public function logout(Request $request){
+        // Auth::user()->tokens->each(function($token, $key) {
+        //     $token->delete();
+        // });
 
-        if ($request->user()) { 
-            $request->user()->tokens('MyApp')->delete();
-        }
-    
-        return response()->json(['message' => 'User Logout Successfully'], 200);
+        $user = Auth::user()->tokens();
+        $user->revoke();
+
+        $response = ["message" => "You have Successfully Logout!"];
+
+        // return response()->json($response, 200);
+        return redirect('/')->with('message', json_encode([$response, 200]));
+        // return redirect('customer')->with('message', json_encode(['success'=>'sucessfull!']));
     }
-
-        
+    
 }

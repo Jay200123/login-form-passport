@@ -15,4 +15,8 @@ class Customer extends Model
 
     protected $fillable = ['fname', 'lname', 'phone', 'address', 'town', 'city', 'customer_image', 'user_id'];
 
+    public function products(){
+        return $this->hasMany('App\Models\Product');
+    }
+
 }

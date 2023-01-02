@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use View;
 use Storage;
@@ -56,6 +57,13 @@ class ProductController extends Controller
 
         $product->product_image = 'images/'.$files->getClientOriginalName();
         $product->save();
+
+        $stock = new Stock();
+
+        $stock->product_id = $product->id;
+        $stock->quantity = $request->quantity;
+
+        $stock->save();
 
         Storage::put('public/images/'.$files->getClientOriginalName(), file_get_contents($files));
         return response()->json(["success" => "product created successfully.", "product" => $product, "status" => 200]);

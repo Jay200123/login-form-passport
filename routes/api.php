@@ -19,9 +19,9 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:passport')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 //CUSTOMER REGISTER
@@ -31,9 +31,7 @@ Route::post('register', [RegisterController::class, 'register'])->name('user.reg
 Route::post('employee-register', [RegisterController::class, 'employeeRegister'])->name('employee.register');
 
 //LOGIN FORM
-Route::post('login', [RegisterController::class, 'login'])->name('user.login');
-
-Route::get('logout', [RegisterController::class, 'logout'])->name('user.logout');
+Route::post('login', [RegisterController::class, 'login'])->name('login');   
 
 //Customer API
 Route::get('/customers/all', [CustomerController::class, 'getCustomerAll'])->name('customer.all');
@@ -84,6 +82,26 @@ Route::post('/services/{id}', [ServiceController::class, 'update'])->name('servi
 //delete
 Route::delete('services/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
 
-// Route::middleware('auth:api')->group( function () {
-//     Route::resource('products', ProductController::class);
+// Route::get('logout', [RegisterController::class, 'logout'])->name('user.logout');
+
+
+// Route::middleware('auth:api')->get('/user', function(Request $request) {
+//     return $request->user();
+
+//         Route::get('logout', [RegisterController::class, 'logout'])->name('user.logout');
+
+//         // Route::fallback(function () {
+//             // return redirect()->back();
+//             // });
+  
 // });
+
+// Route::group(['middleware' => ['auth:api']], function () {
+//     // logout route api code here
+//     Route::post('logout', [RegisterController::class, 'logout'])->name('user.logout');
+//     });
+
+Route::middleware('auth:api')->group( function () {
+
+    Route::get('logout', [RegisterController::class, 'logout'])->name('logout');
+});

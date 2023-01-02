@@ -20,6 +20,10 @@
 
         <li class="nav-item"><a style="color:white" class="nav-link" href="{{route('user.login_form')}}"><span class="glyphicon glyphicon-log-in"><i class="fa fa-sign-in" aria-hidden="true"></i></span><strong>Login</strong></a></li>
 
+        @if (Auth::check())
+              <li><i class="fa fa-sign-out" aria-hidden="true"><a href="{{ route('user.logout') }}">Logout</a></i></li>
+              @else
+            @endif
         </ul>
         </div>
         </nav>

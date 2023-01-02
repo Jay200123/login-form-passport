@@ -10,11 +10,7 @@
 </style>
 <div class="login-form">
             <h1><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</h1>
-           @if (count($errors) > 0)
-                @include('layouts.flash-messages')
-            @endif
-            <form class="" action="{{ route('user.login') }}" method="post">
-                {{ csrf_field() }}
+            <form id ="logForm" action="#" method="#" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i>Email:</label>
@@ -31,6 +27,6 @@
                     @endif
                 </div>
                 <br>
-                    <input type="submit" value="Sign In" class="btn btn-primary">
+                    <button id ="loginForm" type="submit" class="btn btn-primary">Sign In</button>
              </form>
 </div>

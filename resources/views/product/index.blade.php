@@ -56,6 +56,12 @@
               </div>
 
               <div class="form-group"> 
+                <label for="qty" class="control-label">Quantity</label>
+                <input type="text" class="form-control " id="quantity" name="quantity" >
+              </div>
+
+
+              <div class="form-group"> 
                 <label for="image" class="control-label">Image</label>
                 <input type="file" class="form-control" id="uploads" name="uploads" />
                </div>

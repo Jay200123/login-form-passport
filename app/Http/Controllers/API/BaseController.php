@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Response;
 
 class BaseController extends Controller
 {
@@ -16,7 +17,8 @@ class BaseController extends Controller
         ];
 
 
-        return response()->json($response, 200);
+        return response()->json([$response, 200]);
+        // return redirect('/')->with('message', json_encode(['success'=>'sucessfull!']));
     }
 
 

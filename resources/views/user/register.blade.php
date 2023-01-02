@@ -1,4 +1,7 @@
 @include('layouts.master')
+<script>
+document.write(localStorage.setItem('auth_Token', '".$auth_Token."'))
+</script>
 <h3><i class="fa fa-user" aria-hidden="true"></i>Customer Sign Up</h3>
 
 <div class="container" id="customerForm">
