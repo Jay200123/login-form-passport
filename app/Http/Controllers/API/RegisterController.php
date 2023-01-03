@@ -121,9 +121,8 @@ class RegisterController extends BaseController
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
             $success['name'] =  $user->name;
 
-            // $token = $success->getClientOrignalName();
+            $token = `<script>document.write(localStorage.setItem('token', ' ".$success."'))</script>`;
 
-            // Storage::put('public/tokens/'.$token->getClientOriginalName(), file_get_contents($token));
             return $this->sendResponse($success, 'User login successfully.');
         } 
         else{ 

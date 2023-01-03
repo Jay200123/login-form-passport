@@ -15,16 +15,11 @@
                 <div class="form-group">
                     <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i>Email:</label>
                     <input type="text" name="email" id="email" class="form-control">
-                    @if($errors->has('email'))
-                        <div class="error">{{ $errors->first('email') }}</div>
-                    @endif
                 </div>
+
                 <div class="form-group">
                     <label for="password"><i class="fa fa-key" aria-hidden="true"></i>Password:</label>
                     <input type="password" name="password" id="password" class="form-control">
-                    @if($errors->has('password'))
-                        <div class="error">{{ $errors->first('password') }}</div>
-                    @endif
                 </div>
                 <br>
                     <button id ="loginForm" type="submit" class="btn btn-primary">Sign In</button>
