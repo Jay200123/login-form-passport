@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,19 @@ Route::GET('signin-forms', [UserController::class, 'getLogin'])->name('user.logi
 
 //route for message in registration
 Route::GET('confirmation-message', [UserController::class, 'getMessage'])->name('confirm.message');
+
+//Route for Shop index
+Route::GET('shop', [UserController::class, 'getShop'])->name('shop.index');
+
+//routes for chart index
+route::view('/chart', 'chart.index');
+Route::get('/customer-chart',[
+    'uses' => 'App\Http\Controllers\ChartController@cityChart',
+]);
+
+Route::GET('/brand-chart', [ChartController::class, 'productChart']);
+
+Route::GET('/town-chart', [ChartController::class, 'townChart']);
 
 
 

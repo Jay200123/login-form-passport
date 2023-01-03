@@ -18,4 +18,8 @@ class Product extends Model
     public function stock(){
         return $this->hasOne('App\Models\Stock', 'product_id');
     }
+
+    public function  orders(){
+        return $this->belongsToMany(Order::class, 'orderline','orderinfo_id','product_id')->withPivot('quantity');
+    }
 }

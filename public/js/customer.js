@@ -92,8 +92,6 @@ $("#customerSubmit").on("click", function (e) {
             var $ctable = $("#ctable").DataTable();
             $ctable.row.add(data.customer).draw(false);
 
-            window.localStorage.setItem(data, 'MyApp');
-
             bootbox.alert("Successfully Registered You can now Login to the web page!", function() {
                 location.replace('/');
             });

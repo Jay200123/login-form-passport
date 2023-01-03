@@ -10,7 +10,7 @@
 </style>
 <div class="login-form">
             <h1><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</h1>
-            <form id ="logForm" action="#" method="#" enctype="multipart/form-data">
+            <form action="{{route('login')}}" method="POST" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i>Email:</label>
@@ -22,6 +22,6 @@
                     <input type="password" name="password" id="password" class="form-control">
                 </div>
                 <br>
-                    <button id ="loginForm" type="submit" class="btn btn-primary">Sign In</button>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
              </form>
 </div>

@@ -15,7 +15,6 @@ $("#loginForm").on("click", function (e) {
     $.ajax({
         type: "POST",
         url:"/api/login",
-        cache: false,
         data: formData,
         contentType: false,
         processData: false,
@@ -26,10 +25,9 @@ $("#loginForm").on("click", function (e) {
 
         success: function (data) {
            console.log(data)
-        
            $("#email").val(data.email);
            $("#password").val(data.password);
-
+          
             bootbox.alert("Successfully Log In!!!", function() {
             location.replace('/');
              });

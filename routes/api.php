@@ -7,6 +7,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,17 @@ Route::post('/customers/{id}', [CustomerController::class, 'update'])->name('cus
 //delete
 Route::delete('customers/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
 
+
+// CHART API
+
+//customer chart
+Route::get('/chart/city-chart', [ChartController::class, 'cityChart'])->name('city.all');
+
+//product chart
+Route::get('/chart/brand-chart', [ChartController::class, 'productChart'])->name('brand.all');
+
+//employee api
+Route::get('/chart/town-chart', [ChartController::class, 'townChart'])->name('town.all');
 
 //EMPLOYEE API
 Route::get('/employees/all', [EmployeeController::class, 'getEmployeeAll'])->name('employee.all');
@@ -100,6 +113,13 @@ Route::delete('services/{id}', [ServiceController::class, 'destroy'])->name('ser
 //     // logout route api code here
 //     Route::post('logout', [RegisterController::class, 'logout'])->name('user.logout');
 //     });
+
+// Route::post('/product/checkout', [
+//     'uses' => 'ChartController@postCheckout',
+//     'as' => 'checkout'
+// ]);
+
+Route::post('/product/checkout', [OrderController::class, 'postCheckout'])->name('checkout');
 
 Route::middleware('auth:api')->group( function () {
 

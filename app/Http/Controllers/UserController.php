@@ -29,4 +29,8 @@ class UserController extends Controller
     public function getLogin(){
         return view('user.login');
     }
+
+    public function getShop(){
+        return view('shop.index');
+    }
 }

@@ -16,9 +16,7 @@
     <a href="{{route('employee.form')}}" class="button"><strong><i class="fa fa-user-md" aria-hidden="true"></i>Employee Sign Up</strong></a>
     <br>
 
-    <h5><strong>Already have an account? Sign In</strong></h5>
-
-    <a href="#" class="button"><strong><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</strong></a>
-
+    <h5><strong>Already have an account? <a href="{{route('user.login_form')}}">Sign In</a></strong></h5>
+    
     </div>
     

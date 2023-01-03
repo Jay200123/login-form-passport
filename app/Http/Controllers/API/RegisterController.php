@@ -120,31 +120,26 @@ class RegisterController extends BaseController
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
             $success['name'] =  $user->name;
-
-            $token = `<script>document.write(localStorage.setItem('token', ' ".$success."'))</script>`;
-
+   
             return $this->sendResponse($success, 'User login successfully.');
         } 
         else{ 
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         } 
     }
-    public function logout() {
-        // $accessToken = auth()->user()->token();
-        // $user = $request->user()->tokens->find($accessToken);
-        // $user->revoke();
 
-        // Auth::user()->tokens->each(function($token, $key) {
-        //     $token->delete();
-        // });
+
+    public function logout() {
 
         $user = Auth::user()->tokens();
         $user->revoke();
 
         $response = ["message" => "You have Successfully Logout!"];
 
+        return response()->json($success, 200);
+
         // return response()->json($response, 200);
-        return redirect('/')->with('message', json_encode([$response, 200]));
+        // return redirect('/')->with('message', json_encode([$response, 200]));
         // return redirect('customer')->with('message', json_encode(['success'=>'sucessfull!']));
     }
     

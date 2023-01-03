@@ -15,8 +15,12 @@ class Customer extends Model
 
     protected $fillable = ['fname', 'lname', 'phone', 'address', 'town', 'city', 'customer_image', 'user_id'];
 
-    public function products(){
-        return $this->hasMany('App\Models\Product');
+    public function orders(){
+        return $this->belongsToMany('App\Models\Order', 'customer_id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
 
 }
