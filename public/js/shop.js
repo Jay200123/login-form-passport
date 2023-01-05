@@ -11,7 +11,7 @@ $(document).ready(function () {
         success: function (data) {
             console.log(data);
             $.each(data, function (key, value) {
-                id = value.id;
+                // id = value.product_id;
                 var products =
                     "<div class='products'><div class='productDetails'><div class='productImage'><img src=" +
                     "/storage/" +
@@ -20,7 +20,7 @@ $(document).ready(function () {
                     value.sell_price +
                     "</span></p><p>" +
                     value.description +
-                    "</p></div><input type='number' class='qty' name='quantity' min='1' max='5'><p class='productid' hidden>" +
+                    "</p></div><input type='number' class='qty' name='quantity' min='1' max='5'><p class='productId' hidden>" +
                     value.id +
                     "</p>  </div><button type='button' class='btn btn-primary add' style='margin-top:5px;'>Add to cart</button></div>";
                 $("#products").append(products);
@@ -79,18 +79,18 @@ $(document).ready(function () {
         priceTotal = 0;
         let products = new Array();
 
-        $("#cartProducts")
+        $("#cartProducts", "p")
             .find(".productDetails")
             .each(function (i, element) {
-                // console.log(element);
-                let productid = 0;
+                console.log(element);
+                let productId = 0;
                 let qty = 0;
 
                 qty = parseInt($(element).find($(".qty")).val());
-                product_id = parseInt($(element).find($(".productid")).html());
+                product_id = parseInt($(element).find($(".productId")).html());
 
                 products.push({
-                    product_id: productid,
+                    product_id: productId,
                     quantity: qty,
                 });
             });
