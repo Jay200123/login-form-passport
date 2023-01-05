@@ -70,7 +70,7 @@ header {
     margin: 1%;
   }
   
-  .itemText p {
+  .productText p {
     margin-bottom: 20px;
   }
   
@@ -93,7 +93,7 @@ header {
     background: rgba(0, 0, 0, 0.6);
   }
   
-  #cartItemsContainer {
+  #cartProductsContainer {
     position: relative;
     width: 600px;
     left: 50%;
@@ -105,31 +105,31 @@ header {
     overflow: auto;
   }
   
-  #cartItemsContainer i {
+  #cartProductsContainer i {
     position: absolute;
     top: 20px;
     right: 20px;
   }
   
-  #cartItemsContainer .itemDetails {
+  #cartProductsContainer .itemDetails {
     overflow: auto;
     width: 100%;
     margin-bottom: 40px;
   }
   
-  #cartItemsContainer .itemImage {
+  #cartProductsContainer .itemImage {
     float: left;
     width: 260px;
     padding: 0 40px;
   }
   
-  #cartItemsContainer .itemText {
+  #cartProductsContainer .itemText {
     float: right;
     width: 260px;
     padding: 0 40px;
   }
   
-  #cartItemsContainer .itemText .price-container {
+  #cartProductsContainer .productText .price-container {
     margin-top: 0;
   }
   
