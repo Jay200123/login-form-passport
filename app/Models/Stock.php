@@ -9,13 +9,15 @@ class Stock extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'product_id';
+
     public $tables = 'stocks';
 
     public $timestamps = false;
 
     protected $fillable = ['product_id', 'quantity'];
 
-    public function product(){
+    public function products(){
         return $this->belongsTo('App\Models\Product','product_id');
     }
 }

@@ -13,16 +13,16 @@ $(document).ready(function () {
             $.each(data, function (key, value) {
                 id = value.id;
                 var products =
-                    "<div class='item'><div class='productDetails'><div class='productImage'><img src=" +
+                    "<div class='products'><div class='productDetails'><div class='productImage'><img src=" +
                     "/storage/" +
                     value.product_image +
                     " width='50px', height='120px'/></div><div class='productText'><p class='price-container'>Price: Php <span class='price'>" +
                     value.sell_price +
                     "</span></p><p>" +
                     value.description +
-                    "</p></div><input type='number' class='qty' name='quantity' min='1' max='5'><p class='productId' hidden>" +
+                    "</p></div><input type='number' class='qty' name='quantity' min='1' max='5'><p class='productid' hidden>" +
                     value.id +
-                    "</p>      </div><button type='button' class='btn btn-primary add' style='margin-top:5px;'>Add to cart</button></div>";
+                    "</p>  </div><button type='button' class='btn btn-primary add' style='margin-top:5px;'>Add to cart</button></div>";
                 $("#products").append(products);
             });
         },
@@ -49,6 +49,7 @@ $(document).ready(function () {
         $("#shoppingCart").toggle();
     });
 
+
     $("#shoppingCart").on("click", ".removeProduct", function () {
         $(this).parent().remove();
         productCount--;
@@ -72,7 +73,7 @@ $(document).ready(function () {
         $("#cartProducts").text("");
         $("#cartTotal").text("Total: $" + priceTotal);
     });
-
+ //checkout
     $("#checkout").click(function () {
         productCount = 0;
         priceTotal = 0;
@@ -86,10 +87,10 @@ $(document).ready(function () {
                 let qty = 0;
 
                 qty = parseInt($(element).find($(".qty")).val());
-                productid = parseInt($(element).find($(".productId")).html());
+                product_id = parseInt($(element).find($(".productid")).html());
 
                 products.push({
-                    id: productid,
+                    product_id: productid,
                     quantity: qty,
                 });
             });

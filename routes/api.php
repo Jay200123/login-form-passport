@@ -8,7 +8,6 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ChartController;
-use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,7 +118,8 @@ Route::delete('services/{id}', [ServiceController::class, 'destroy'])->name('ser
 //     'as' => 'checkout'
 // ]);
 
-Route::post('/product/checkout', [OrderController::class, 'postCheckout'])->name('checkout');
+//check out
+Route::post('/product/checkout', [ProductController::class, 'postCheckout'])->name('checkout');
 
 Route::middleware('auth:api')->group( function () {
 

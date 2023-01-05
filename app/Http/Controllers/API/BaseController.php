@@ -21,7 +21,7 @@ class BaseController extends Controller
 
 
         // return $json;
-        return response()->json($response, 200);
+       return response()->json($response, 200);
     }
 
 

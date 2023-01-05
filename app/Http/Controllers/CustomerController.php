@@ -32,10 +32,18 @@ class CustomerController extends Controller
     public function getCustomerAll(Request $request)
     {
         
-        $customers = Customer::orderBy('id', 'ASC')->get();
-        return response()->json($customers);
+    //     $customers = Customer::orderBy('id')->paginate(5);
+    //     return response()->json([
+    //     'success' => true, 
+    //     'customers' => $customers,
+    //     'pagination' => $customers->links()
+    // ]);
+
+    $customers = Customer::orderBy('id', 'ASC')->get();
+    return response()->json($customers);
 
     }
+
     /**
      * Store a newly created resource in storage.
      *

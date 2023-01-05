@@ -10,8 +10,12 @@ class Customer extends Model
     use HasFactory;
 
     public $tables = 'customers';
+
+    public $primaryKey = 'id';
     
     public $timestamps = false;
+
+    protected $guarded = ['id'];
 
     protected $fillable = ['fname', 'lname', 'phone', 'address', 'town', 'city', 'customer_image', 'user_id'];
 

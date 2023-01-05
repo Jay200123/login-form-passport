@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Customer;
+use Log;
+use DB;
+use Carbon;
 use View;
 use Storage;
 
@@ -128,8 +133,47 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $product->delete();
+        $product->stock()->delete();
         // return response()->json($product);
         return response()->json(["success" => "Product deleted successfully.", "product" => $product, "status" => 200]);
     }
+
+    //check out function
+    public function postCheckout(Request $request){
+
+        $products = json_decode($request->getContent(),true);
+        Log::info(print_r($products, true));
+          try {
+              DB::beginTransaction();
+
+              $order = new Order();
+              $order->date_placed = now();
+            //   $custid = -1;
+              $customer =  Customer::find(1);
+            //   $product = Product::find(1);
+              $order->customer_id = $customer->id;
+            //   $order->product_id = $product->id;
+                          //   $customer->orders()->save($order);
+
+            foreach($products as $product) {
+               $id = $product['product_id'];
+               $order->products()->attach($order->orderinfo_id,['quantity'=> $product['quantity'],'product_id'=>$id]);
+
+            //    $order->product_id = $id;
+
+               $stock = Stock::find($id);
+               $stock->quantity = $stock->quantity - $product['quantity'];
+               $stock->save();
+            }
+            
+          }
+          catch (\Exception $e) {
+              DB::rollback();
+              return response()->json(array('status' => 'Order failed','code'=>409,'error'=>$e->getMessage()));
+              }
+      
+          DB::commit();
+          return response()->json(array('status' => 'Order Success','code'=>200,'order id'=>$order->orderinfo_id));
+      
+          }//end postcheckout
 }

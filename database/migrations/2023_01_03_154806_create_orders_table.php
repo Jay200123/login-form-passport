@@ -17,8 +17,6 @@ return new class extends Migration
             $table->increments('orderinfo_id');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
             $table->date('date_placed');
             $table->timestamps();
         });
